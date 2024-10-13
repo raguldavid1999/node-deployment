@@ -25,7 +25,7 @@ const itemsPool = new Pool({
 app.post('/users',async (req, res)=>{
     try{
         const params = req.body;
-        const result = await itemsPool.query(`SELECT * FROM public.users WHERE first_name = '${params.first_name}'`);
+        const result = await itemsPool.query(`SELECT * FROM public.users WHERE first_name = 'Samantha'`);
         res.json(result.rows);
     }
     catch(err){
