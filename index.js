@@ -34,6 +34,18 @@ app.post('/users',async (req, res)=>{
     }
 })
 
+app.post('/users-list',async (req, res)=>{
+    try{
+        const params = req.body;
+        const result = await itemsPool.query(`SELECT * FROM public.users`);
+        res.json(result.rows);
+    }
+    catch(err){
+        console.error(err);
+        res.status(500).json({ error: 'Database error' });
+    }
+})
+
 app.get('/users/:id', (req, res)=>{
     const user = users.find(u=>u.id==req.params.id);
     if(!user){
