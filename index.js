@@ -58,7 +58,6 @@ app.get('/users-list', async (req, res) => {
                 status: 200,
                 data: JSON.parse(redisValue)
             };
-            await redisClient.del('mykey'); // Clear the cache after retrieval
             return sendResponse(res, 200, responseData.data);
         }
 
